@@ -39,7 +39,7 @@ const eventsData = [
     date: "2025-08-02",
     dateLabel: "2 August 2025",
     cover: "cover.jpg",
-    gallery:   gallery: ["Presentation (4).png", "Presentation (5).png", "Presentation (6).png", "Presentation (7).png", "Presentation (8).png"],
+    gallery: ["Presentation (4).png", "Presentation (5).png", "Presentation (6).png", "Presentation (7).png", "Presentation (8).png"],
     description:
       "An exciting introduction to Algobyte, the official Tech Club of Banasthali, welcoming freshers into the world of technology. The event showcased the club’s projects, events, opportunities, interactive sessions, and future plans, while helping students discover how to begin and grow their tech journey.",
   },
