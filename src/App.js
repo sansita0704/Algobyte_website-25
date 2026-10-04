@@ -2,7 +2,6 @@ import Header, { HeaderPhone } from "./components/Header";
 import Home from "./components/Home";
 import Work from "./components/Work";
 import About from "./components/About";
-import Timeline from "./components/Timeline";
 import Services from "./components/Services";
 import Testimonial from "./components/Testimonial";
 import Contact from "./components/Contact";
@@ -12,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import './global.scss';
 import Team from "./components/Team";
+import EventDetail from "./components/EventDetail";
 import { createBrowserRouter } from "react-router-dom";
 
 export function App() {
@@ -21,14 +21,14 @@ export function App() {
     const resizeRatio = () => {
       setRatio(window.innerWidth / window.innerHeight);
     };
-    
+
     window.addEventListener("resize", resizeRatio);
-    
+
     return () => {
       window.removeEventListener("resize", resizeRatio);
     };
   }, [ratio]);
-  
+
   return (
     <>
       <HeaderPhone menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -37,7 +37,6 @@ export function App() {
       <Services />
       <About />
       <Work />
-      <Timeline />
       <Testimonial />
       <Resources />
       <Contact />
@@ -48,13 +47,16 @@ export function App() {
 }
 
 export const appRouter = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-    },
-    {
-        path: "/team",
-        element: <Team />,
-    },
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/team",
+    element: <Team />,
+  },
+  {
+    path: "/events/:id",
+    element: <EventDetail />,
+  },
 ]);
-
