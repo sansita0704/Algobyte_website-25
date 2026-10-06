@@ -29,7 +29,7 @@ const eventsData = [
     date: "2025-11-19",
     dateLabel: "19 November 2025",
     cover: "cover.jpg",
-    gallery: [],
+    gallery:  ["Presentation (1).png", "Presentation (2).png", "Presentation (3).png", "Presentation (4).png", "Presentation.png"],
     description:
       "A junior-senior interaction event by Algobyte designed to connect students with seniors and share valuable insights on internships, placements, projects, academics, career paths, and networking. A space to learn from experiences, build connections, and gain a clearer direction for the future.",
   },
@@ -59,7 +59,7 @@ const eventsData = [
     date: "2024-09-28",
     dateLabel: "28 September 2024",
     cover: "cover.jpg",
-    gallery: [],
+    gallery: ["Presentation (1).png", "Presentation (10).png", "Presentation (2).png", "Presentation (3).png", "Presentation (4).png", "Presentation (5).png", "Presentation (6).png", "Presentation (7).png", "Presentation (8).png", "Presentation (9).png", "Presentation.png"],
     description:
       "A senior-junior interaction by Algobyte, connecting students with experienced seniors for practical guidance on internships, placements, LinkedIn, resumes, and GitHub.",
   },
@@ -69,7 +69,7 @@ const eventsData = [
     date: "2024-08-29",
     dateLabel: "29 August 2024",
     cover: "cover.jpg",
-    gallery: [],
+    gallery: ["Picture1.png", "Presentation (10).png", "Presentation (11).png", "Presentation (12).png", "Presentation (13).png", "Presentation (3).png", "Presentation (9).png"],
     description:
       "An introduction to Algobyte, the official open-source tech club of Banasthali Vidyapith, featuring valuable guidance on placements, LinkedIn, resumes, and GitHub while helping students explore technology and innovation.",
   },
