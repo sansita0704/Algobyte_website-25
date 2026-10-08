@@ -1,22 +1,170 @@
 $text2: "Open Sans", sans-serif;
+$nav-h: 9rem; // navbar ki height (DevTools se check karke adjust kar)
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+@keyframes growLine {
+    from { width: 0; }
+    to   { width: 90px; }
+}
+
+@keyframes sectionIn {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
 
 .team {
-    padding: 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+    // FIX: top padding navbar se zyada, taaki heading dhake nahi
+    padding: calc(#{$nav-h} + 3rem) 5rem 3rem;
+
+    // soft background glow (same pink / lavender shades)
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: 0;
+    }
+    &::before {
+        top: -120px;
+        left: -120px;
+        background: #ffc2cf;
+    }
+    &::after {
+        bottom: -120px;
+        right: -120px;
+        background: #e3c8ff;
+    }
+
+    // keep content above the glow
+    > * {
+        position: relative;
+        z-index: 1;
+    }
 }
 
+// ---------- Meet Our Team ----------
 .team h2 {
     text-align: center;
-    font: 700 2.5rem $text2;
+    font: 800 3.6rem/1.3 $text2; // line-height add kiya, text clip na ho
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    margin: 0;
+    padding-top: 0;
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+    scroll-margin-top: $nav-h; // #team anchor se aane par bhi sahi dikhe
+
+    &::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 4px;
+        margin: 16px auto 0;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #ff8fa3, #c084fc);
+        animation: growLine 1s ease 0.5s both;
+    }
 }
 
+// ---------- Section headings (Leads, Technical Team...) ----------
 h3 {
     font-size: 1.7rem;
     margin: 3rem 0 1.5rem 0;
 }
 
+.team h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 6rem 0 2rem;
+    scroll-margin-top: $nav-h;
+    font-family: $text2;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+
+    // heading se pehle chhoti gradient bar
+    &::before {
+        content: "";
+        width: 6px;
+        height: 32px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, #ff8fa3, #c084fc);
+        flex-shrink: 0;
+    }
+
+    // heading ke baad line, jo section ko alag dikhati hai
+    &::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, rgba(255, 143, 163, 0.7), rgba(192, 132, 252, 0));
+    }
+}
+
+// pehla heading ("Our Mentors") title ke paas
+.team h2 + h3 {
+    margin-top: 3.5rem;
+}
+
+// scroll karte hi headings side se slide-in hon
+@supports (animation-timeline: view()) {
+    .team h3 {
+        animation: sectionIn linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 45%;
+    }
+}
+
+// ---------- Rows ----------
 .team-row {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    margin: 1rem 0;
+    margin: 1rem 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .team {
+        padding: calc(#{$nav-h} + 1.5rem) 1.5rem 2rem;
+    }
+
+    .team h2 {
+        font-size: 2.4rem;
+    }
+
+    .team h3 {
+        font-size: 1.4rem;
+        margin: 4rem 0 1.5rem;
+    }
+
+    .team h2 + h3 {
+        margin-top: 2.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .team h2,
+    .team h2::after,
+    .team h3 {
+        animation: none !important;
+    }
 }
